@@ -7,9 +7,11 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+#adding in second page
 @app.route('/Post')
-def index():
+def Post():
     return render_template('post.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
