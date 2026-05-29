@@ -20,6 +20,10 @@ def Home():
 def Signup():
     return render_template('signup.html')
 
+@app.route('/signuppage')
+def signuppage():
+    return render_template('signuppage.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
 
