@@ -20,6 +20,10 @@ def Home():
 
 @app.route('/Signup', methods=['GET', 'POST'])
 def Signup():
+    # see if method is post
+    # if it is, then get data from request
+    # Then actually send that data to the DB
+    # Probably redirect or give user some 'toast' as success - flash
     return render_template('signup.html')
 
 @app.route('/signuppage')
