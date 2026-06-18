@@ -28,7 +28,7 @@ def Post():
 def Home():
     return render_template('index.html')
 
-@app.route('/signup', methods=["GET","POST"])
+@app.route('/Signup', methods=["GET","POST"])
 def login():
     if request.method == "POST":
         username = request.form['username']
