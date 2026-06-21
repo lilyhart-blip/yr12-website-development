@@ -28,26 +28,15 @@ def Post():
 def Home():
     return render_template('index.html')
 
-@app.route('/Signup', methods=["GET","POST"])
-def login():
-    if request.method == "POST":
-        username = request.form['username']
-        password = request.form['password']
-        #try to find this user in the database- note- just keepin' it simple so usernames must be unique
-        sql = "SELECT * FROM user WHERE username = ?"
-        user = query_db(sql=sql,args=(username,),one=True)
-        if user:
-            #we got a user!!
-            #check password matches-
-            if check_password_hash(user[2],password):
-                #we are logged in successfully
-                #Store the username in the session
-                session['user'] = user
-                flash("Logged in successfully")
-            else:
-                flash("Password incorrect")
-        else:
-            flash("Username does not exist")
+@app.route('/Signup', methods=['GET', 'POST'])
+def Signup():
+        if request.method == "POST":
+            username = request.form['username']
+            password = request.form['password']
+    # if it is, then get data from request
+    # Then actually send that data to the DB
+    # Probably redirect or give user some 'toast' as success - flash
+        flash("Sign up Succsessful")
     return render_template('signup.html')
 
 @app.route('/signuppage')
