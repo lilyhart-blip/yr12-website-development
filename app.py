@@ -19,7 +19,7 @@ def query_db(sql,args=(),one=False):
 def index():
     return render_template('index.html')
 
-#adding in second
+#adding in second route
 @app.route('/Post')
 def Post():
     return render_template('post.html')
@@ -37,7 +37,7 @@ def Signup():
     # Then actually send that data to the DB
     # Probably redirect or give user some 'toast' as success - flash
         flash("Sign up Succsessful")
-    return render_template('signup.html')
+        return render_template('signup.html')
 
 @app.route('/signuppage')
 def signuppage():
