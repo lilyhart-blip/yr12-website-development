@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content%}
+
+    <h1> Snake </h1>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="Post">Post</a></li>
+            <li><a href="Signup">Sign Up</a></li>
+        </ul>
+    </nav>    
+
+    <div class="threecolumn">
+    {% for item in results %}
+        <div class="snake">
+            <h1>{{ snake_id[1] }}</h1>
+            <a href="snake_type/{{snake_id[0]}}">
+            </a>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}
+
