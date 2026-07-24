@@ -33,14 +33,17 @@ def Home():
 
 @app.route('/Signup', methods=['GET', 'POST'])
 def Signup():
-        if request.method == "POST":
-            username = request.form['username']
-            password = request.form['password']
-    # if it is, then get data from request
-    # Then actually send that data to the DB
-    # Probably redirect or give user some 'toast' as success - flash
-            flash("Sign up Succsessful")
-        return render_template('signup.html')
+    print('sanity check', request.method, request.form)
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+# if it is, then get data from request
+# Then actually send that data to the DB
+# Probably redirect or give user some 'toast' as success - flash
+        flash("Sign up Succsessful")
+    sql = "INSERT INTO item (item) VALUES (?);"   #create a query to insert ther data
+    query_db(sql,(item,))  #execute the query
+    return render_template('signup.html')
 
 @app.route('/signuppage')
 def signuppage():
