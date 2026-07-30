@@ -41,7 +41,7 @@ def Signup():
 # Then actually send that data to the DB
 # Probably redirect or give user some 'toast' as success - flash
         flash("Sign up Succsessful")
-    sql = "INSERT INTO item (item) VALUES (?);"   #create a query to insert ther data
+    sql = "INSERT INTO User (userid, username, password) VALUES (?);"   #create a query to insert ther data
     query_db(sql,(item,))  #execute the query
     return render_template('signup.html')
 
