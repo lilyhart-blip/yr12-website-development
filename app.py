@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, session, redirect
 import sqlite3
-
+from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = "SuperSecret67"
@@ -35,14 +35,18 @@ def Home():
 def Signup():
     print('sanity check', request.method, request.form)
     if request.method == "POST":
+
         username = request.form['username']
+
         password = request.form['password']
+
+        hashed_password = generate_password_hash(password)
 # if it is, then get data from request
 # Then actually send that data to the DB
 # Probably redirect or give user some 'toast' as success - flash
+        sql = "INSERT INTO User (username, password) VALUES (?, ?);"   #create a query to insert ther data
+        query_db(sql,(username, hashed_password))  #execute the query
         flash("Sign up Succsessful")
-    sql = "INSERT INTO User (userid, username, password) VALUES (?);"   #create a query to insert ther data
-    query_db(sql,(item,))  #execute the query
     return render_template('signup.html')
 
 @app.route('/signuppage')
