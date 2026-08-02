@@ -33,7 +33,7 @@ def Home():
 
 @app.route('/Signup', methods=['GET', 'POST'])
 def Signup():
-    print('sanity check', request.method, request.form)
+
     if request.method == "POST":
 
         username = request.form['username']
@@ -41,17 +41,15 @@ def Signup():
         password = request.form['password']
 
         hashed_password = generate_password_hash(password)
-# if it is, then get data from request
-# Then actually send that data to the DB
-# Probably redirect or give user some 'toast' as success - flash
+
         sql = "INSERT INTO User (username, password) VALUES (?, ?);"   #create a query to insert ther data
         query_db(sql,(username, hashed_password))  #execute the query
         flash("Sign up Succsessful")
     return render_template('signup.html')
 
-@app.route('/signuppage')
-def signuppage():
-    return render_template('signuppage.html')
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 @app.route('/snake/<int:id>')
 def snake(id):
