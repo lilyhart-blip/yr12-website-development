@@ -5,6 +5,9 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = "SuperSecret67"
 
+USERNAME = "admin"
+PASSWORD = "admin"
+
 DATABASE = "app.db"
 
 def query_db(sql,args=(),one=False):
@@ -47,9 +50,32 @@ def Signup():
         flash("Sign up Succsessful")
     return render_template('signup.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == "POST":
+        #trying to get the username from the form
+        username = request.form['username']
+        password = request.form['password']
+        #check them here
+        
+        sql = "SELECT * FROM user WHERE username = ?"
+        user = query_db(sql=sql,args=(username,),one=True)
+        if user:
+            if check_password_hash(user[2],password):
+                session['user'] = user
+                flash("logged in seccessfully")
+
+            else:
+                flash("password incorrect")
+
+        else:
+            flash("username does not exist")
+    
     return render_template('login.html')
+
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
 
 @app.route('/snake/<int:id>')
 def snake(id):
