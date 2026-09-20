@@ -1,5 +1,7 @@
 body{
     margin: 0px;
+    background-color: #415A77;
+    font-family: Arial, Helvetica, sans-serif;
 }
 main{
     margin: 20px;
@@ -10,7 +12,7 @@ h1{
 
 .navbar ul{
     list-style-type: none;
-    background-color: rgb(46, 46, 46);
+    background-color: #1B263B;
     padding: 0px;
     margin: 0%;
     overflow: hidden;
@@ -23,7 +25,7 @@ h1{
     text-align: center;
 }
 .navbar a:hover{
-    background-color: hsl(0, 0%, 10%);
+    background-color: #0D1B2A;
 }
 
 .navbar li{
