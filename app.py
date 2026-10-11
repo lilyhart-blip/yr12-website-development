@@ -83,6 +83,16 @@ def snake(id):
     snake = query_db(sql,args=(id,),one=True)
     return render_template('Snakes.html', snake=snake)
 
+@app.post('/add_item')
+def add_item():
+    item = request.form['snake_type']
+    file = request.files['file']
+    filename = secure_filename(file.filename)
+    file.save(UPLOAD_FOLDER+filename)
+    sql = "INSERT INTO item (name, image_filename) VALUES (?,?);"   #create a query to insert ther data
+    query_db(sql,(item,filename))  
+    return redirect('/Post') 
+
 if __name__ == "__main__":
     app.run(debug=True)
 
