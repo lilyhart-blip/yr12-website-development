@@ -7,9 +7,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
-    {% include 'footer.html' %}
+         <h1> Snake </h1>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="Post">Post</a></li>
+            <li><a href="Signup">Sign Up</a></li>
+            <li><a href="login">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h3>home pageeeee</h3>
+        <p> paragraph insert here broski</p>
+        <li><a href="snake">Snake</a></li>
+
+    </main>
+
+
         <!-- Add the message flashing so we can give the user some feedback about their login process -->
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -20,5 +35,7 @@
     </ul>
     {% endif %}
     {% endwith %}
+    {% block content %}
+    {% endblock %}
 </body>
 </html>
